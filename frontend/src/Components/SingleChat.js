@@ -222,7 +222,7 @@ return (
             <Box
                 d="flex" alignItems="center" justifycontent="center" h="100%">
                 <Text fontSize="3xl" pb={3} fontFamily="Work sans">
-                    Click on the userto start chatting
+                    Click on the user to start chatting
                 </Text>
             </Box>
         )}
