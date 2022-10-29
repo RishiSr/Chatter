@@ -3,7 +3,7 @@
 
 The realtime chat app is build using MERN stack.
 
-This is a full-stack chat application that can be up and running with just a few steps. Its frontend is built with the help of React. The backend is built with Express.js and Node.js. Real-time message broadcasting is developed using Socket.IO.
+This is a full-stack chat application. Its frontend is built with the help of React. The backend is built with Express.js and Node.js. Real-time message broadcasting is developed using Socket.IO.
 
 
 
