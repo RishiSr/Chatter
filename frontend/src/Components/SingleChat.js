@@ -14,8 +14,8 @@ import { BiSolidSend } from 'react-icons/bi';
 import { TiMessageTyping } from 'react-icons/ti';
 
 // const ENDPOINT = "https://chatter-chat-web-app.herokuapp.com/";
-// const ENDPOINT = "http://127.0.0.1:5000/"
-const ENDPOINT = "https://chatter-m.onrender.com/"
+const ENDPOINT = "http://127.0.0.1:5000/"
+// const ENDPOINT = "https://chatter-m.onrender.com/"
 var socket, selectedChatCompare;
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
@@ -94,7 +94,41 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         });
     });
     const sendMessage = async (event) => {
+        console.log(event)
         if ((event.key === "Enter" || event.key === "mouseup" || event.key === "touchend") && newMessage) {
+            socket.emit("stop typing", selectedChat._id);
+            try {
+                const config = {
+                    headers: {
+                        "Content-type": "application/json",
+                        Authorization: `Bearer ${user.token}`,
+                    },
+                };
+                setNewMessage("");
+                const { data } = await axios.post('/api/message',
+                    {
+                        content: newMessage,
+                        chatId: selectedChat,
+                    }, config);
+                socket.emit("new message", data);
+                setMessages([...messages, data]);
+                setMessages([...messages, data]);
+                console.log(data);
+            } catch (error) {
+                toast({
+                    title: "Error Occured!",
+                    description: "Failed to send the Message",
+                    status: "error",
+                    duration: 5000,
+                    isClosable: true,
+                    position: "bottom",
+                });
+            }
+        }
+    }
+    const sendMessageUsingButton = async (event) => {
+        console.log(event)
+        if (newMessage) {
             socket.emit("stop typing", selectedChat._id);
             try {
                 const config = {
@@ -229,7 +263,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                                     value={newMessage}
                                     onChange={typingHandler}
                                 />
-                                <Box pos="absolute" right={"0"} marginRight={"4px"} onClick={(e) => sendMessage(e)} cursor={"pointer"}>
+                                <Box pos="absolute" right={"0"} marginRight={"4px"} onClick={(e) => sendMessageUsingButton(e)} cursor={"pointer"}>
 
                                     <BiSolidSend />
                                 </Box>
