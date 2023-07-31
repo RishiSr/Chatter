@@ -94,7 +94,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
         });
     });
     const sendMessage = async (event) => {
-        if (event.key === "Enter" && newMessage) {
+        if ((event.key === "Enter" || event.key === "mouseup" || event.key === "touchend") && newMessage) {
             socket.emit("stop typing", selectedChat._id);
             try {
                 const config = {
@@ -229,7 +229,7 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                                     value={newMessage}
                                     onChange={typingHandler}
                                 />
-                                <Box pos="absolute" right={"0"} marginRight={"4px"} onClick={() => sendMessage()} cursor={"pointer"}>
+                                <Box pos="absolute" right={"0"} marginRight={"4px"} onClick={(e) => sendMessage(e)} cursor={"pointer"}>
 
                                     <BiSolidSend />
                                 </Box>
