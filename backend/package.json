@@ -14,7 +14,6 @@
     "express": "^4.17.3",
     "express-async-handler": "^1.2.0",
     "jsonwebtoken": "^8.5.1",
-    "lottie-react": "^2.2.1",
     "mongoose": "^6.3.0",
     "nodemon": "^2.0.15",
     "socket.io": "^4.5.0"
