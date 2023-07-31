@@ -10,6 +10,9 @@ import { useEffect, useState } from "react";
 import './style.css'
 import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client"
+import { BiSolidSend } from 'react-icons/bi';
+import { TiMessageTyping } from 'react-icons/ti';
+
 // const ENDPOINT = "https://chatter-chat-web-app.herokuapp.com/";
 // const ENDPOINT = "http://127.0.0.1:5000/"
 const ENDPOINT = "https://chatter-m.onrender.com/"
@@ -209,13 +212,28 @@ const SingleChat = ({ fetchAgain, setFetchAgain }) => {
                             id="first-name"
                             isRequired
                             mt={3}
-                        >{istyping ? <div>....</div> : (<></>)}
-                            <Input variant="filled"
-                                bg="#E0E0E0"
-                                placeholder="Enter a message.."
-                                value={newMessage}
-                                onChange={typingHandler}
-                            />
+                        >{istyping ?
+                            <>
+
+
+                                <TiMessageTyping size="50px" color="#747474" />
+
+
+                            </>
+                            : (<></>)}
+                            <Box display={"flex"} placeItems={"center "} gap={"2px"} pos="relative"   >
+
+                                <Input variant="filled"
+                                    bg="#E0E0E0"
+                                    placeholder="Enter a message.."
+                                    value={newMessage}
+                                    onChange={typingHandler}
+                                />
+                                <Box pos="absolute" right={"0"} marginRight={"4px"} onClick={() => sendMessage()} cursor={"pointer"}>
+
+                                    <BiSolidSend />
+                                </Box>
+                            </Box>
                         </FormControl>
 
                     </Box>

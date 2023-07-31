@@ -22,7 +22,7 @@ const Homepage = () => {
         </Text>
 
       </Box>
-      <Box bg="white" w="50%" p={4} borderRadius="1g" borderWidth="1px">
+      <Box bg="white" w={{ 'base': "100%", 'md': "50%" }} p={4} borderRadius="1g" borderWidth="1px">
         <Tabs variant='soft-rounded' colorScheme='blue'>
           <TabList>
             <Tab width="50%">Login</Tab>
