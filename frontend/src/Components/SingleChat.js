@@ -11,7 +11,8 @@ import './style.css'
 import ScrollableChat from "./ScrollableChat";
 import io from "socket.io-client"
 // const ENDPOINT = "https://chatter-chat-web-app.herokuapp.com/";
-const ENDPOINT = "http://127.0.0.1:5000/"
+// const ENDPOINT = "http://127.0.0.1:5000/"
+const ENDPOINT = "https://chatter-m.onrender.com/"
 var socket, selectedChatCompare;
 const SingleChat = ({ fetchAgain, setFetchAgain }) => {
 
