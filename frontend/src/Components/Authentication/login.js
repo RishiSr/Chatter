@@ -17,7 +17,7 @@ const Login = () => {
   const [loading, setLoading] = useState(false);
   const { setUser } = ChatProvider;
   const history = useHistory();
-
+  const ENDPOINT = "https://chatter-m.onrender.com"
   const submitHandler = async () => {
     setLoading(true);
     if (!email || !password) {
@@ -41,7 +41,7 @@ const Login = () => {
       };
 
       const { data } = await axios.post(
-        "/api/user/login",
+        ENDPOINT + "/api/user/login",
         { email, password },
         config
       );
