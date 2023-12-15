@@ -8,7 +8,7 @@ import { useState } from "react";
 import { useHistory } from "react-router";
 
 const Signup = () => {
-  const ENDPOINT = "https://chatter-m.onrender.com"
+  // const ENDPOINT = "https://chatter-m.onrender.com"
   const [show, setShow] = useState(false);
   const handleClick = () => setShow(!show);
   const toast = useToast();
@@ -52,7 +52,7 @@ const Signup = () => {
         },
       };
       const { data } = await axios.post(
-        ENDPOINT + "/api/user",
+        "/api/user",
         {
           name,
           email,
